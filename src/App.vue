@@ -1,35 +1,35 @@
 <script setup>
-import {ref} from 'vue'
+import { ref } from 'vue'
+import Component from './components/Component.vue'
 
-const itemsArr = ref([10,20,30,40]);
-let seen = ref(false);
+const itemsArr = ref([10, 20, 30, 40])
+let num = ref(0)
 
-function doSomething(){
-  console.log('CLICKING');
-  console.log(`before: ${seen.value}`);
-  seen.value = !seen.value;
-  console.log(`after: ${seen.value}`);
-  
+function doSomething() {
+  console.log('CLICKING')
+  num.value++
 }
 </script>
 
 <template>
-  <header>
-  </header>
+  <header></header>
 
   <main>
-    <a @click="doSomething"> Click here </a>
-    <p v-if="seen">Now you see me</p>
+    <a @click="doSomething" class="linkk"> Click here </a>
+    <p>Number {{ num }}</p>
 
     <ul>
-      <li v-for="item in itemsArr" :key="item"> Item {{ item }}</li>
+      <li v-for="item in itemsArr" :key="item">Item {{ item }}</li>
     </ul>
   </main>
+
+  <Component></Component>
 </template>
 
 <style scoped>
-
 @media (min-width: 1024px) {
-
+  .linkk:hover {
+    text-decoration: underline;
+  }
 }
 </style>
